@@ -1,18 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyectofinal;
 
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author fabii
- */
 public class ArbolLibroPorAutor {
 
-    private NodoLibro raiz;
+    private NodoArbol raiz;
 
     public ArbolLibroPorAutor() {
         this.raiz = null;
@@ -233,3 +224,4 @@ public class ArbolLibroPorAutor {
         return buscarNodo(raiz, clave);
     }
 }
+
