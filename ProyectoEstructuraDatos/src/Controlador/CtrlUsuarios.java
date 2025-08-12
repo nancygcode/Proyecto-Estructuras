@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
 import Modelo.Cliente;
 import Modelo.Compra;
@@ -10,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author danie
+ * @author daniel
  */
 public class CtrlUsuarios {
      private ArrayList<Cliente> usuarios = new ArrayList<>();
@@ -19,10 +16,10 @@ public class CtrlUsuarios {
     // Método 1: registrarUsuario()
     public void registrarUsuario() {
         try {
-            int id = Integer.parseInt(JOptionPane.showInputDialog("ID del usuario:"));
-            String nombre = JOptionPane.showInputDialog("Nombre:");
-            String correo = JOptionPane.showInputDialog("Correo:");
-            String pass = JOptionPane.showInputDialog("Contraseña:");
+            int id = Integer.parseInt(JOptionPane.showInputDialog("ID del usuario: "));
+            String nombre = JOptionPane.showInputDialog("Nombre: ");
+            String correo = JOptionPane.showInputDialog("Correo: ");
+            String pass = JOptionPane.showInputDialog("Contraseña: ");
 
             if (correo == null || correo.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Correo inválido.");

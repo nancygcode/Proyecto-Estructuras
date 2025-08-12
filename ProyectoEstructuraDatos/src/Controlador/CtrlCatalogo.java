@@ -1,5 +1,9 @@
 package Controlador;
 
+import Modelo.Libro;
+import Nodos.NodoArbol;
+import javax.swing.JOptionPane;
+
 public class CtrlCatalogo {
 
   public class GestionCatalogo {
@@ -30,7 +34,7 @@ public class CtrlCatalogo {
         String titulo = JOptionPane.showInputDialog("Título del libro a eliminar:");
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID del libro a eliminar:"));
 
-        NodoLibro nodo = arbolAutor.buscarNodo(autor, titulo, id);
+        NodoArbol nodo = arbolAutor.buscarNodo(autor, titulo, id);
         if (nodo == null) {
             JOptionPane.showMessageDialog(null, "No se encontró ese libro.");
             return;
@@ -49,7 +53,7 @@ public class CtrlCatalogo {
         String titulo = JOptionPane.showInputDialog("Título del libro a modificar:");
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID del libro a modificar:"));
 
-        NodoLibro nodo = arbolAutor.buscarNodo(autor, titulo, id);
+        NodoArbol nodo = arbolAutor.buscarNodo(autor, titulo, id);
         if (nodo == null) {
             JOptionPane.showMessageDialog(null, "No se encontró ese libro.");
             return;
