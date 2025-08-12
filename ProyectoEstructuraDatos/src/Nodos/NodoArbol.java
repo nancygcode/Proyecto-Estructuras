@@ -5,10 +5,10 @@ import Modelo.Libro;
 
 public class NodoArbol {
     private Libro elemento;
-    private NodoLibro enlaceIzq;
-    private NodoLibro enlaceDer;
+    private NodoArbol enlaceIzq;
+    private NodoArbol enlaceDer;
 
-    public NodoLibro() {
+    public NodoArbol() {
         this.enlaceIzq = null;
         this.enlaceDer = null;
     }
@@ -21,19 +21,19 @@ public class NodoArbol {
         this.elemento = elemento;
     }
 
-    public NodoLibro getEnlaceIzq() {
+    public NodoArbol getEnlaceIzq() {
         return enlaceIzq;
     }
 
-    public void setEnlaceIzq(NodoLibro enlaceIzq) {
+    public void setEnlaceIzq(NodoArbol enlaceIzq) {
         this.enlaceIzq = enlaceIzq;
     }
 
-    public NodoLibro getEnlaceDer() {
+    public NodoArbol getEnlaceDer() {
         return enlaceDer;
     }
 
-    public void setEnlaceDer(NodoLibro enlaceDer) {
+    public void setEnlaceDer(NodoArbol enlaceDer) {
         this.enlaceDer = enlaceDer;
     }
 
