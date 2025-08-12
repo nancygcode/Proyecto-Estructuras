@@ -15,15 +15,17 @@ public class Libro {
         this.autor = " ";
         this.editorial = " ";
         this.precio= 0;
+        this.stock=0;
        
     }
 
-    public Libro(int idLibro, String titulo, String autor, String editorial, double precio) {
+    public Libro(int idLibro, String titulo, String autor, String editorial, double precio, double stock) {
         this.idLibro = idLibro;
         this.titulo = titulo;
         this.autor = autor;
         this.editorial = editorial;
         this.precio= precio;
+        this.stock=stock;
     }
     
     public int getIdLibro() {
