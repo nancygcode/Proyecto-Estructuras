@@ -6,7 +6,7 @@ import Nodos.NodoArbol;
 
 public class ArbolLibroPorAutor {
 
-    private NodoArbol raiz;
+    private NodoLibro raiz;
 
     public ArbolLibroPorAutor() {
         this.raiz = null;
@@ -159,7 +159,7 @@ public class ArbolLibroPorAutor {
         if (vacio()) {
             return false;
         }
-        Libro clave = new Libro(idLibro, titulo, autor, "", 0.0);
+        Libro clave = new Libro(idLibro, titulo, autor, "", 0.0,0.0);
         raiz = eliminarRec(raiz, clave);
         // Para saber si realmente se borró, podrías intentar buscar de nuevo y verificar.
         return true;
@@ -195,7 +195,7 @@ public class ArbolLibroPorAutor {
 
     public boolean modificar(String autor, String titulo, int idLibro) {
         // Para modificar campos que NO afectan el orden (editorial, precio, stock) basta encontrar el nodo:
-        NodoLibro nodo = buscarNodo(raiz, new Libro(idLibro, titulo, autor, "", 0.0));
+        NodoLibro nodo = buscarNodo(raiz, new Libro(idLibro, titulo, autor, "", 0.0, 0.0));
         if (nodo == null) {
             return false;
         }
@@ -223,7 +223,7 @@ public class ArbolLibroPorAutor {
     }
 
     public NodoLibro buscarNodo(String autor, String titulo, int idLibro) {
-        Libro clave = new Libro(idLibro, titulo, autor, "", 0.0);
+        Libro clave = new Libro(idLibro, titulo, autor, "", 0.0, 0.0);
         return buscarNodo(raiz, clave);
     }
 }
