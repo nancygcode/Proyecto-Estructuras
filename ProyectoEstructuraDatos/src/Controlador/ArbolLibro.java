@@ -6,7 +6,7 @@ import Nodos.NodoArbol;
 
 public class ArbolLibro {
 
-    private NodoArbol raiz;
+   private NodoLibro raiz;
 
     public ArbolLibro() {
         this.raiz = null;
@@ -21,7 +21,8 @@ public class ArbolLibro {
     }
     //elimina espacios y mayus/minus para no repetir nombres
     private String norm(String s) {
-        return s.trim().toLowerCase();
+         if (s == null) return "";
+    return s.trim().toLowerCase();
     }
 
     // Insertar
@@ -180,4 +181,3 @@ public class ArbolLibro {
         return true;
     }
 }
-
