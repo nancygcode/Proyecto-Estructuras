@@ -1,6 +1,6 @@
 package Nodos;
 
-import Controlador.CtrlUsuarios;
+
 import Controlador.ListaCarrito;
 import Modelo.Compra;
 
@@ -8,7 +8,7 @@ import Modelo.Compra;
 public class NodoCola {
    
     private ListaCarrito objeto;
-    
+
     private Compra compra;
     private NodoCola siguiente;
 
@@ -35,6 +35,7 @@ public class NodoCola {
         this.objeto = objeto;
     }
 
+   
 
     public Compra getCompra() {
         return compra;

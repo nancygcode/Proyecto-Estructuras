@@ -7,9 +7,6 @@ import javax.swing.JOptionPane;
 
 public class CtrlCatalogo {
     
-
-
-  public class GestionCatalogo {
       ListaCarrito carrito = new ListaCarrito();
 
     private final ArbolLibro arbolTitulo = new ArbolLibro();                 // índice por TÍTULO
@@ -111,13 +108,13 @@ public class CtrlCatalogo {
     }
 
     // Buscar libro
-    public void buscar() {
+    public void buscar(Libro l) {
         int op = Integer.parseInt(JOptionPane.showInputDialog(
                 "Buscar por:\n1) Título (exacto)\n2) Listar TODOS por Autor"));
         switch (op) {
             case 1 -> {
                 String t = JOptionPane.showInputDialog("Título:");
-                Libro l = arbolTitulo.buscarPorTitulo(t);
+                 l = arbolTitulo.buscarPorTitulo(t);
                 JOptionPane.showMessageDialog(null, l == null ? "No encontrado" : l.toString());
                    if (l == null) {
                 JOptionPane.showMessageDialog(null, "No encontrado");
@@ -144,6 +141,7 @@ public class CtrlCatalogo {
 
     // Menú de gestión
     public void menucatalogo() {
+        Libro l= new Libro();
         int op;
         do {
             op = Integer.parseInt(JOptionPane.showInputDialog(
@@ -160,7 +158,7 @@ public class CtrlCatalogo {
                 case 1 -> agregar();
                 case 2 -> eliminar();
                 case 3 -> modificar();
-                case 4 -> buscar();
+                case 4 -> buscar(l);
                 case 5 -> JOptionPane.showMessageDialog(null, arbolTitulo.mostrarInordenSB());
                 case 6 -> JOptionPane.showMessageDialog(null, arbolAutor.mostrarInorden());
                 case 0 -> { /* salir */ }
@@ -170,4 +168,4 @@ public class CtrlCatalogo {
     }
 }
   
-}
+

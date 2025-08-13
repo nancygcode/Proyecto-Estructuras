@@ -4,7 +4,6 @@ package Controlador;
 import javax.swing.JOptionPane;
 
 import Controlador.ListaCarrito;
-
 import Modelo.Compra;
 import Nodos.NodoCarrito;
 import Nodos.NodoCola;
@@ -33,10 +32,10 @@ public class CtrlPedidos {
          //Agregamos el objeto estudiante en el nuevo nodo
          NodoCola nuevo= new NodoCola();
          //Agrego el estudiante al nodo nuevo
-         nuevo.setObjeto(carrito);
     
          nuevo.setCompra( com);
          //Insertamos el nodo en la cola
+         nuevo.setObjeto(carrito);
          if (vacia()){
              inicio=nuevo;
              fin=nuevo;
@@ -47,24 +46,32 @@ public class CtrlPedidos {
              
          }
      }
-    public void generarFactura(NodoCarrito inicioCarrito) {
-        if (inicioCarrito == null) {
-            System.out.println("No hay productos en el carrito.");
+   
+      public void generarFacturas() {
+        if (vacia()) {
+            System.out.println("No hay pedidos.");
             return;
         }
 
-        NodoCarrito aux = inicioCarrito;
-        double total = 0;
+        NodoCola auxCola = inicio;
+        while (auxCola != null) {
+            System.out.println("----- FACTURA -----");
+            System.out.println("ID Compra: " + auxCola.getCompra().getIdPedido());
+            System.out.println("ID Detalle: " + auxCola.getCompra().getDetalle());
+            System.out.println("Total: " + auxCola.getCompra().getTotal());
 
-        System.out.println("----- FACTURA -----");
-        while (aux != null) {
-            System.out.println("Libro: " + aux.getPedido().getObjeto().getTitulo()+ " | Precio: " + aux.getPedido().getObjeto().getPrecio())
-                    ;
-          
-            aux = aux.getSiguiente();
+            NodoCarrito auxCarrito = auxCola.getObjeto().getInicio();
+            double total = 0;
+            while (auxCarrito != null) {
+                System.out.println(auxCarrito.getPedido().getObjeto().toString()); // llama a Libro.toString()
+                total += auxCarrito.getPedido().getObjeto().getPrecio();
+                auxCarrito = auxCarrito.getSiguiente();
+            }
+            System.out.println("Total: ₡" + total);
+            System.out.println("------------------\n");
+
+            auxCola = auxCola.getSiguiente();
         }
-   
-        System.out.println("------------------");
     }
      
      

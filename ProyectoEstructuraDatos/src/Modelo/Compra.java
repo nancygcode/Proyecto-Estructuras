@@ -15,8 +15,6 @@ public class Compra {
     private double total;
     private Libro objeto;
     
-    
-
     public Compra() {
         this.idPedido = 0;
         this.detalle = " ";
@@ -53,6 +51,16 @@ public class Compra {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public Libro getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(Libro objeto) {
+        this.objeto = objeto;
+    }
+    
+    
     
 
 }

@@ -100,8 +100,18 @@ public class ListaCarrito {
         aux = aux.getSiguiente();           // pasamos al siguiente nodo
     }
 
+    
     return total;
 }
+    
+    
+
+    public NodoCarrito getInicio() {
+        return inicio;
+    }
+
+ 
+    
     
     
 }
