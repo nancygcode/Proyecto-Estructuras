@@ -1,26 +1,26 @@
 package Modelo;
-import Controlador.CtrlCatalogo;
+
 
 
 public class Pedido {
 
-    private CtrlCatalogo objeto;
+    private Libro objeto;
 
 
     public Pedido() {
     }
 
-    public Pedido(CtrlCatalogo objeto) {
+    public Pedido(Libro objeto) {
 
         this.objeto = objeto;
     }
 
 
-    public CtrlCatalogo getObjeto() {
+    public Libro getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(CtrlCatalogo objeto) {
+    public void setObjeto(Libro objeto) {
         this.objeto = objeto;
     }
 }

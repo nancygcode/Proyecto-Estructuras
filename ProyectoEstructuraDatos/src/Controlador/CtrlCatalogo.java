@@ -4,9 +4,13 @@ import Modelo.Libro;
 import Nodos.NodoArbol;
 import javax.swing.JOptionPane;
 
+
 public class CtrlCatalogo {
+    
+
 
   public class GestionCatalogo {
+      ListaCarrito carrito = new ListaCarrito();
 
     private final ArbolLibro arbolTitulo = new ArbolLibro();                 // índice por TÍTULO
     private final ArbolLibroPorAutor arbolAutor = new ArbolLibroPorAutor();  // índice por AUTOR→TÍTULO→ID
@@ -115,6 +119,20 @@ public class CtrlCatalogo {
                 String t = JOptionPane.showInputDialog("Título:");
                 Libro l = arbolTitulo.buscarPorTitulo(t);
                 JOptionPane.showMessageDialog(null, l == null ? "No encontrado" : l.toString());
+                   if (l == null) {
+                JOptionPane.showMessageDialog(null, "No encontrado");
+            } else {
+                JOptionPane.showMessageDialog(null, l.toString());
+
+                int pedido = JOptionPane.showConfirmDialog(null, 
+                        "¿Desea agregar este libro al carrito?",
+                        "Confirmar Pedido", JOptionPane.YES_NO_OPTION);
+
+                if (pedido == JOptionPane.YES_OPTION) {
+                    carrito.agregarPedido(l);
+                }
+            }
+                
             }
             case 2 -> {
                 String a = JOptionPane.showInputDialog("Autor:");
