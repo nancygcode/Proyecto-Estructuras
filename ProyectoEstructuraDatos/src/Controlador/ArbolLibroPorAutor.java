@@ -2,11 +2,12 @@ package Controlador;
 
 import Modelo.Libro;
 import Nodos.NodoArbol;
+import javax.swing.JOptionPane;
 
 
 public class ArbolLibroPorAutor {
 
-    private NodoLibro raiz;
+    private NodoArbol raiz;
 
     public ArbolLibroPorAutor() {
         this.raiz = null;
@@ -38,7 +39,7 @@ public class ArbolLibroPorAutor {
         return Integer.compare(a.getIdLibro(), b.getIdLibro());
     }
 
-    private void insertarRec(NodoLibro actual, NodoLibro nuevo) {
+    private void insertarRec(NodoArbol actual, NodoArbol nuevo) {
         if (comparar(nuevo.getElemento(), actual.getElemento()) <= 0) {
             if (actual.getEnlaceIzq() == null) {
                 actual.setEnlaceIzq(nuevo);
@@ -63,7 +64,7 @@ public class ArbolLibroPorAutor {
         l.setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Precio:")));
         l.setStock(Double.parseDouble(JOptionPane.showInputDialog("Stock:")));
 
-        NodoLibro nuevo = new NodoLibro();
+        NodoArbol nuevo = new NodoArbol();
         nuevo.setElemento(l);
 
         if (vacio()) {
@@ -76,7 +77,7 @@ public class ArbolLibroPorAutor {
     }
 
     public void insertar(Libro l) {
-        NodoLibro nuevo = new NodoLibro();
+        NodoArbol nuevo = new NodoArbol();
         nuevo.setElemento(l);
         if (vacio()) {
             raiz = nuevo;
@@ -85,7 +86,7 @@ public class ArbolLibroPorAutor {
         }
     }
 
-    private void inordenRec(NodoLibro n, StringBuilder sb) {
+    private void inordenRec(NodoArbol n, StringBuilder sb) {
         if (n != null) {
             inordenRec(n.getEnlaceIzq(), sb);
             sb.append(n.getElemento().toString()).append("\n"); // usa toString()
@@ -102,7 +103,7 @@ public class ArbolLibroPorAutor {
         return sb.toString();
     }
 
-    private String inordenRec(NodoLibro n) {
+    private String inordenRec(NodoArbol n) {
         if (n == null) {
             return "";
         }
@@ -122,7 +123,7 @@ public class ArbolLibroPorAutor {
     // Busca un libro por autor
     public Libro buscarUnoPorAutor(String autor) {
         String clave = norm(autor);
-        NodoLibro actual = raiz;
+        NodoArbol actual = raiz;
         while (actual != null) {
             String k = norm(actual.getElemento().getAutor());
             int cmp = clave.compareTo(k);
@@ -144,7 +145,7 @@ public class ArbolLibroPorAutor {
         return (sb.length() == 0) ? "Sin libros de ese autor." : sb.toString();
     }
 
-    private void listarPorAutorRec(NodoLibro n, String autorNorm, StringBuilder sb) {
+    private void listarPorAutorRec(NodoArbol n, String autorNorm, StringBuilder sb) {
         if (n == null) {
             return;
         }
@@ -165,7 +166,7 @@ public class ArbolLibroPorAutor {
         return true;
     }
 
-    private NodoLibro eliminarRec(NodoLibro n, Libro clave) {
+    private NodoArbol eliminarRec(NodoArbol n, Libro clave) {
         if (n == null) {
             return null;
         }
@@ -183,7 +184,7 @@ public class ArbolLibroPorAutor {
                 return n.getEnlaceIzq();
             }
             // 2 hijos: reemplazar con sucesor (mínimo del subárbol derecho)
-            NodoLibro suc = n.getEnlaceDer();
+            NodoArbol suc = n.getEnlaceDer();
             while (suc.getEnlaceIzq() != null) {
                 suc = suc.getEnlaceIzq();
             }
@@ -195,7 +196,7 @@ public class ArbolLibroPorAutor {
 
     public boolean modificar(String autor, String titulo, int idLibro) {
         // Para modificar campos que NO afectan el orden (editorial, precio, stock) basta encontrar el nodo:
-        NodoLibro nodo = buscarNodo(raiz, new Libro(idLibro, titulo, autor, "", 0.0, 0.0));
+        NodoArbol nodo = buscarNodo(raiz, new Libro(idLibro, titulo, autor, "", 0.0, 0.0));
         if (nodo == null) {
             return false;
         }
@@ -208,7 +209,7 @@ public class ArbolLibroPorAutor {
         return true;
     }
 
-    private NodoLibro buscarNodo(NodoLibro n, Libro clave) {
+    private NodoArbol buscarNodo(NodoArbol n, Libro clave) {
         if (n == null) {
             return null;
         }
@@ -222,7 +223,7 @@ public class ArbolLibroPorAutor {
         return buscarNodo(n.getEnlaceDer(), clave);
     }
 
-    public NodoLibro buscarNodo(String autor, String titulo, int idLibro) {
+    public NodoArbol buscarNodo(String autor, String titulo, int idLibro) {
         Libro clave = new Libro(idLibro, titulo, autor, "", 0.0, 0.0);
         return buscarNodo(raiz, clave);
     }

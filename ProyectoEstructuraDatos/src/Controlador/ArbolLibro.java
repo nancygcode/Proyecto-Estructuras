@@ -6,7 +6,7 @@ import Nodos.NodoArbol;
 
 public class ArbolLibro {
 
-   private NodoLibro raiz;
+   private NodoArbol raiz;
 
     public ArbolLibro() {
         this.raiz = null;
@@ -26,7 +26,7 @@ public class ArbolLibro {
     }
 
     // Insertar
-    private void insertarRec(NodoLibro actual, NodoLibro nuevo) {
+    private void insertarRec(NodoArbol actual, NodoArbol nuevo) {
         //normaliza las variables
         String tituloNuevo = norm(nuevo.getElemento().getTitulo());
         String tituloActual = norm(actual.getElemento().getTitulo());
@@ -55,7 +55,7 @@ public class ArbolLibro {
         l.setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Precio:")));
         l.setStock(Double.parseDouble(JOptionPane.showInputDialog("Stock:")));
 
-        NodoLibro nuevo = new NodoLibro();
+        NodoArbol nuevo = new NodoArbol();
         nuevo.setElemento(l);
 
         if (vacio()) {
@@ -66,7 +66,7 @@ public class ArbolLibro {
     }
 
     public void insertar(Libro l) {
-        NodoLibro nuevo = new NodoLibro();
+        NodoArbol nuevo = new NodoArbol();
         nuevo.setElemento(l);
         if (vacio()) {
             raiz = nuevo;
@@ -76,7 +76,7 @@ public class ArbolLibro {
     }
 
     // Mostrar inorden con string builder=acumula el resultado en una sola variable, JOptionPane
-    private void inordenRec(NodoLibro n, StringBuilder sb) {
+    private void inordenRec(NodoArbol n, StringBuilder sb) {
         if (n != null) {
             inordenRec(n.getEnlaceIzq(), sb);
             sb.append(n.getElemento().toString()).append("\n"); // usa toString()
@@ -93,7 +93,7 @@ public class ArbolLibro {
         return sb.toString();
     }
 
-    private void inordenRec(NodoLibro n) {  //para mostrar en consola
+    private void inordenRec(NodoArbol n) {  //para mostrar en consola
         if (n != null) {
             inordenRec(n.getEnlaceIzq());
             System.out.println(n.getElemento().toString()); // usa toString()
@@ -112,7 +112,7 @@ public class ArbolLibro {
     // Buscar por título
     public Libro buscarPorTitulo(String titulo) {
         String clave = norm(titulo);
-        NodoLibro actual = raiz;
+        NodoArbol actual = raiz;
         while (actual != null) {
             String k = norm(actual.getElemento().getTitulo());
             int cmp = clave.compareTo(k);
@@ -142,7 +142,7 @@ public class ArbolLibro {
     }
 
     // Eliminar por título
-    private NodoLibro eliminarRec(NodoLibro nodo, String clave) {
+    private NodoArbol eliminarRec(NodoArbol nodo, String clave) {
         if (nodo == null) {
             return null;
         }
@@ -163,7 +163,7 @@ public class ArbolLibro {
             }
 
             // Caso 2 hijos
-            NodoLibro sucesor = nodo.getEnlaceDer();
+            NodoArbol sucesor = nodo.getEnlaceDer();
             while (sucesor.getEnlaceIzq() != null) {
                 sucesor = sucesor.getEnlaceIzq();
             }

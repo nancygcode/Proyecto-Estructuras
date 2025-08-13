@@ -52,7 +52,7 @@ public class CtrlUsuarios {
         String pass = JOptionPane.showInputDialog("Contraseña:");
 
         for (Cliente c : usuarios) {
-            if (c.getCorreo().equalsIgnoreCase(correo) && c.getPassword().equals(pass)) {
+            if (c.getCorreo().equalsIgnoreCase(correo) && c.getPass().equals(pass)) {
                 sesionActual = c;
                 JOptionPane.showMessageDialog(null, "Bienvenido, " + c.getNombre());
                 return;
