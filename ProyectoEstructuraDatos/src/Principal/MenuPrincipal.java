@@ -24,8 +24,9 @@ public class MenuPrincipal {
                 "Seleccione una opción:\n"
                 + "1) Ingresar al Catalogo\n"
                 + "2) Ver Carrito\n"
-                + "3) Pagar Carrito\n"+
-                    "4) Salir"));
+                + "3) Eliminar del carrito\n"
+                + "4) Pagar Carrito\n"+
+                    "5) Salir"));
 
         switch (op) {
             case 1:
@@ -37,10 +38,13 @@ public class MenuPrincipal {
                opciones();
                 break;
             case 3:
+                carrito.extraer();
+                break;
+            case 4:
                 AccionComprar();
                 opciones();
                 break;
-             case 4:
+             case 5:
                 System.exit(0);
             default:
                 JOptionPane.showMessageDialog(null, "Opción inválida");
