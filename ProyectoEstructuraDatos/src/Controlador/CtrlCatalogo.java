@@ -7,7 +7,14 @@ import javax.swing.JOptionPane;
 
 public class CtrlCatalogo {
     
-      ListaCarrito carrito = new ListaCarrito();
+      ListaCarrito carrito;
+
+    public CtrlCatalogo(ListaCarrito carrito) {
+        this.carrito= carrito;
+    }
+
+    
+      
 
     private final ArbolLibro arbolTitulo = new ArbolLibro();                 // índice por TÍTULO
     private final ArbolLibroPorAutor arbolAutor = new ArbolLibroPorAutor();  // índice por AUTOR→TÍTULO→ID
@@ -108,14 +115,15 @@ public class CtrlCatalogo {
     }
 
     // Buscar libro
-    public void buscar(Libro l) {
+    public void buscar() {
+        Libro l = new Libro();
         int op = Integer.parseInt(JOptionPane.showInputDialog(
                 "Buscar por:\n1) Título (exacto)\n2) Listar TODOS por Autor"));
         switch (op) {
             case 1 -> {
                 String t = JOptionPane.showInputDialog("Título:");
                  l = arbolTitulo.buscarPorTitulo(t);
-                JOptionPane.showMessageDialog(null, l == null ? "No encontrado" : l.toString());
+             
                    if (l == null) {
                 JOptionPane.showMessageDialog(null, "No encontrado");
             } else {
@@ -127,6 +135,7 @@ public class CtrlCatalogo {
 
                 if (pedido == JOptionPane.YES_OPTION) {
                     carrito.agregarPedido(l);
+                    JOptionPane.showMessageDialog(null, "libro agregado al carrito exitosamente");
                 }
             }
                 
@@ -141,7 +150,7 @@ public class CtrlCatalogo {
 
     // Menú de gestión
     public void menucatalogo() {
-        Libro l= new Libro();
+
         int op;
         do {
             op = Integer.parseInt(JOptionPane.showInputDialog(
@@ -158,7 +167,7 @@ public class CtrlCatalogo {
                 case 1 -> agregar();
                 case 2 -> eliminar();
                 case 3 -> modificar();
-                case 4 -> buscar(l);
+                case 4 -> buscar();
                 case 5 -> JOptionPane.showMessageDialog(null, arbolTitulo.mostrarInordenSB());
                 case 6 -> JOptionPane.showMessageDialog(null, arbolAutor.mostrarInorden());
                 case 0 -> { /* salir */ }

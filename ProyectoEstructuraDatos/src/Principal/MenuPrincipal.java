@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
  * @author XSF
  */
 public class MenuPrincipal {
-    CtrlCatalogo catalogo = new CtrlCatalogo();
-    CtrlPedidos Compra = new CtrlPedidos();
+
     ListaCarrito carrito = new ListaCarrito();
+    CtrlCatalogo catalogo = new CtrlCatalogo(carrito);
     
     public void opciones() {
        int op = Integer.parseInt(JOptionPane.showInputDialog(
@@ -52,18 +52,18 @@ public class MenuPrincipal {
 
         
         public void AccionComprar(){
-        CtrlPedidos factura = new CtrlPedidos();
+        CtrlPedidos factura = new CtrlPedidos(carrito);
         int accion=Integer.parseInt(JOptionPane.showInputDialog("Desea: \n1.Efectivo \n 2. Tarjeta"));
         switch (accion){
             case 1:
                 JOptionPane.showMessageDialog(null, "Serian: "+ carrito.calcularTotal());
-                factura.encolar(carrito);
+                factura.encolar();
                 factura.generarFacturas();
                
                 break;
             case 2: 
                 JOptionPane.showMessageDialog(null, "Aqui tiene el datafono");
-                factura.encolar(carrito);
+                factura.encolar();
                 factura.generarFacturas();
                 break;
             default:

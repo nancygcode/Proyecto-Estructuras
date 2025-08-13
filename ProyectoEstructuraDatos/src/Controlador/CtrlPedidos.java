@@ -11,6 +11,13 @@ import Nodos.NodoCola;
 public class CtrlPedidos {
      private NodoCola inicio;
      private NodoCola fin;
+     private ListaCarrito carrito;
+
+    public CtrlPedidos(ListaCarrito carrito) {
+  
+        this.carrito = carrito;
+    }
+     
      
      
       public boolean vacia(){
@@ -22,8 +29,11 @@ public class CtrlPedidos {
          }
      }
     
-    public void encolar(ListaCarrito carrito){
-        
+    public void encolar(){
+        if (carrito.vacia()) {
+            JOptionPane.showMessageDialog(null, "El carrito está vacío, no se puede generar pedido.");
+            return;
+        }
           Compra com = new Compra();
          com.setIdPedido(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la compra")));
          com.setDetalle(JOptionPane.showInputDialog("Ingrese el detalle del pedido"));
@@ -32,10 +42,10 @@ public class CtrlPedidos {
          //Agregamos el objeto estudiante en el nuevo nodo
          NodoCola nuevo= new NodoCola();
          //Agrego el estudiante al nodo nuevo
-    
+         nuevo.setObjeto(carrito);
          nuevo.setCompra( com);
          //Insertamos el nodo en la cola
-         nuevo.setObjeto(carrito);
+ 
          if (vacia()){
              inicio=nuevo;
              fin=nuevo;
