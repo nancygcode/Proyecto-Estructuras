@@ -19,7 +19,7 @@ public class ArbolLibro {
             return false;
         }
     }
-    //elimina espacios y mayus/minus para no repetir nombres
+    
     private String norm(String s) {
          if (s == null) return "";
     return s.trim().toLowerCase();
