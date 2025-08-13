@@ -1,19 +1,7 @@
 
 package Controlador;
 import Modelo.Cliente;
-import Controlador.ListaCarrito;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author daniel
- */
-public class CtrlUsuarios {
-     private ArrayList<Cliente> usuarios = new ArrayList<>();
-    private Cliente sesionActual = null;
-
-    // Método 1: registrarUsuario()
     public void registrarUsuario() {
         try {
             int id = Integer.parseInt(JOptionPane.showInputDialog("ID del usuario: "));
@@ -46,7 +34,7 @@ public class CtrlUsuarios {
         return false;
     }
 
-    // Método 2: iniciarSesion()
+
     public void iniciarSesion() {
         String correo = JOptionPane.showInputDialog("Correo:");
         String pass = JOptionPane.showInputDialog("Contraseña:");
@@ -61,31 +49,17 @@ public class CtrlUsuarios {
         JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
     }
 
-    // Método 3: mostrarHistorial()
+
     public void mostrarHistorial() {
         if (sesionActual == null) {
             JOptionPane.showMessageDialog(null, "Debe iniciar sesión primero.");
             return;
         }
-        JOptionPane.showMessageDialog(null, sesionActual.getHistorial().recorrerComoTexto());
-    }
 
-    // Extra: registrar compra en la pila del usuario logueado
     public void registrarCompraActual() {
         if (sesionActual == null) {
             JOptionPane.showMessageDialog(null, "Debe iniciar sesión primero.");
             return;
         }
         try {
-            int idPed = Integer.parseInt(JOptionPane.showInputDialog("ID Pedido:"));
-            String det = JOptionPane.showInputDialog("Detalle (ej: 'Libro X x2'):");
-            double total = Double.parseDouble(JOptionPane.showInputDialog("Total:"));
-
-            sesionActual.getHistorial().push(new Compra(idPed, det, total));
-            JOptionPane.showMessageDialog(null, "Compra registrada en el historial.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Datos inválidos.");
-        }
-    }
-}
 

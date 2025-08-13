@@ -1,13 +1,11 @@
 package Controlador;
 
-import Controlador.ListaCarrito;
+
 import Modelo.Libro;
 import Nodos.NodoArbol;
 import javax.swing.JOptionPane;
 
-public class CtrlCatalogo {
 
-  public class GestionCatalogo {
 
     private final ArbolLibro arbolTitulo = new ArbolLibro();                 // índice por TÍTULO
     private final ArbolLibroPorAutor arbolAutor = new ArbolLibroPorAutor();  // índice por AUTOR→TÍTULO→ID
@@ -107,32 +105,7 @@ public class CtrlCatalogo {
         }
     }
 
-      // Buscar libro
-      public void buscar() {
-          int op = Integer.parseInt(JOptionPane.showInputDialog(
-                  "Buscar por:\n1) Título (exacto)\n2) Listar TODOS por Autor"));
-          switch (op) {
-              case 1 -> {
-                  String t = JOptionPane.showInputDialog("Título:");
-                  Libro l = arbolTitulo.buscarPorTitulo(t);
-                  if (l == null) {
-                      JOptionPane.showMessageDialog(null, "No encontrado");
-                  } else {
-                      JOptionPane.showMessageDialog(null, l.toString());
-                      int pedido = JOptionPane.showConfirmDialog(null, "¿Desea agregar este libro al carrito?",
-                              "Confirmar Pedido", JOptionPane.YES_NO_OPTION);
-                      if (pedido == JOptionPane.YES_OPTION) {
-                      }
-                  }
-              }
-              case 2 -> {
-                  String a = JOptionPane.showInputDialog("Autor:");
-                  JOptionPane.showMessageDialog(null, arbolAutor.listarPorAutor(a));
-              }
-              default ->
-                  JOptionPane.showMessageDialog(null, "Opción inválida");
-          }
-      }
+
 
     // Menú de gestión
     public void menucatalogo() {

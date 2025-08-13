@@ -2,8 +2,7 @@ package Controlador;
 
 import Nodos.NodoCarrito;
 import javax.swing.JOptionPane;
-import Controlador.CtrlCatalogo;
-import Modelo.Pedido;
+
 
 public class ListaCarrito {
 
@@ -17,7 +16,7 @@ public class ListaCarrito {
         }
     }
 
-    public void agregarPedido(CtrlCatalogo elemento) {
+
         Pedido pedido = new Pedido(elemento);
         NodoCarrito nuevoNodo = new NodoCarrito(pedido);
         if (inicio == null) {
@@ -32,25 +31,19 @@ public class ListaCarrito {
         JOptionPane.showMessageDialog(null, "Libro agregrado con exito al carrito");
     }
 
-    public void extraer(CtrlCatalogo elemento) {
-        NodoCarrito actual = inicio;
-        NodoCarrito anterior = null;
 
-        while (actual != null) {
-            if (actual.getPedido().getObjeto()==elemento) {
                 if (anterior == null) {
                     inicio = actual.getSiguiente();//elimina el nodo inicial
                 } else {
                     anterior.setSiguiente(actual.getSiguiente());//elimina al nodo medio o final
                 }
                 JOptionPane.showMessageDialog(null, "Libro eliminado con exito del carrito");
-                
             }
             anterior = actual;
             actual = actual.getSiguiente();
             JOptionPane.showMessageDialog(null, "El libro no se pudo eliminar");
         }
-     
+
     }
 
     public void mostrar() {
@@ -59,7 +52,7 @@ public class ListaCarrito {
             NodoCarrito aux = inicio;
             while (aux != null) {
                 //agrega los datos mostrados porque lo muestra por marca
-                s += aux.getPedido().getObjeto();
+
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "Contenido de la lista\n\n" + s);
@@ -74,7 +67,7 @@ public class ListaCarrito {
         NodoCarrito aux = inicio;
         if (!vacia()) {
             while (aux != null) {
-                s += aux.getPedido().getObjeto();
+
                 aux = aux.getSiguiente();
             }
         } else {
@@ -83,8 +76,3 @@ public class ListaCarrito {
         }
         return s;
     }
-}
-    
-
-   
-

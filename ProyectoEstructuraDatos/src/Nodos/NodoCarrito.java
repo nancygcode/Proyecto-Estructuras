@@ -27,7 +27,3 @@ public class NodoCarrito {
     public void setSiguiente(NodoCarrito siguiente) {
         this.siguiente = siguiente;
     }
-    
-    
-
-}
