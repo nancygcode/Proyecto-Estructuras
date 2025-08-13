@@ -122,7 +122,6 @@ public class CtrlCatalogo {
                       int pedido = JOptionPane.showConfirmDialog(null, "¿Desea agregar este libro al carrito?",
                               "Confirmar Pedido", JOptionPane.YES_NO_OPTION);
                       if (pedido == JOptionPane.YES_OPTION) {
-                          ListaCarrito.
                       }
                   }
               }
