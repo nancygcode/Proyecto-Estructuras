@@ -1,13 +1,14 @@
 package Modelo;
 
 
-
 public class Cliente {
     
     private int id;
     private String nombre;
     private String correo;
     private String pass;
+    
+    private Historial historial = new Historial();
 
     public Cliente() {
     }
@@ -50,6 +51,8 @@ public class Cliente {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
-    
+
+    public Historial getHistorial() {
+        return historial;
+    }
 }
