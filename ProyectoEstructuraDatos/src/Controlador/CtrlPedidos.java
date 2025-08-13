@@ -77,7 +77,7 @@ public class CtrlPedidos {
                 total += auxCarrito.getPedido().getObjeto().getPrecio();
                 auxCarrito = auxCarrito.getSiguiente();
             }
-            System.out.println("Total: ₡" + total);
+            System.out.println("Total: " + total);
             System.out.println("------------------\n");
 
             auxCola = auxCola.getSiguiente();

@@ -32,10 +32,10 @@ public class ListaCarrito {
         JOptionPane.showMessageDialog(null, "Libro agregrado con exito al carrito");
     }
 
-    public void extraer(String titulo) {
+    public void extraer() {
         NodoCarrito actual = inicio;
         NodoCarrito anterior = null;
-        titulo= JOptionPane.showInputDialog("Ingrese el nombre del libro que desea eliminar");
+        String titulo= JOptionPane.showInputDialog("Ingrese el nombre del libro que desea eliminar");
 
         while (actual != null) {
             if (actual.getPedido().getObjeto().getTitulo().equals(titulo)) {
@@ -60,15 +60,15 @@ public class ListaCarrito {
             NodoCarrito aux = inicio;
             while (aux != null) {
                 //agrega los datos mostrados porque lo muestra por marca
-                s += aux.getPedido().getObjeto().getTitulo()+"/"+
-                        aux.getPedido().getObjeto().getAutor()+"\n"
-                        +aux.getPedido().getObjeto().getEditorial()+"\n"
-                        +aux.getPedido().getObjeto().getPrecio();
+                s += "Título: "+aux.getPedido().getObjeto().getTitulo()+"\n"+
+                        "Autor: "+aux.getPedido().getObjeto().getAutor()+"\n"+
+                        "Editorial"+aux.getPedido().getObjeto().getEditorial()+"\n"+
+                        "Precio"+aux.getPedido().getObjeto().getPrecio();
                 aux = aux.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, "Contenido de la lista\n\n" + s);
+            JOptionPane.showMessageDialog(null, "Carrito 🛒\n\n" + s);
         } else {
-            JOptionPane.showMessageDialog(null, "error: al mostrar la lista");
+            JOptionPane.showMessageDialog(null, "error: al mostrar el carrito 🛒");
         }
     }
 
@@ -85,7 +85,7 @@ public class ListaCarrito {
                 aux = aux.getSiguiente();
             }
         } else {
-            return "Imposible mostrar: Carrito Vacío";
+            return "Imposible mostrar: Carrito 🛒 Vacío";
 
         }
         return s;
