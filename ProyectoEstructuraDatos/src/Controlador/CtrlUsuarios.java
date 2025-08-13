@@ -56,29 +56,6 @@ public class CtrlUsuarios {
         JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
     }
 
-    public void mostrarHistorial() {
-        if (sesionActual == null) {
-            JOptionPane.showMessageDialog(null, "Debe iniciar sesión primero.");
-            return;
-        }
-        JOptionPane.showMessageDialog(null, String.valueOf(sesionActual.getHistorial()));
+
+   
     }
-
-    public void registrarCompraActual() {
-        if (sesionActual == null) {
-            JOptionPane.showMessageDialog(null, "Debe iniciar sesión primero.");
-            return;
-        }
-        try {
-            int idPedido = Integer.parseInt(JOptionPane.showInputDialog("ID Pedido:"));
-            String detalle = JOptionPane.showInputDialog("Detalle (ej: 'Libro X x2'):");
-            double total = Double.parseDouble(JOptionPane.showInputDialog("Total:"));
-
-            Compra nuevaCompra = new Compra(idPedido, detalle, total);
-            JOptionPane.showMessageDialog(null, "Compra registrada: " + nuevaCompra.toString());
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Datos inválidos.");
-        }
-    }
-}

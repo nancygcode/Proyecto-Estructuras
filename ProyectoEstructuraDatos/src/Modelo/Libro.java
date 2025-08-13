@@ -75,16 +75,13 @@ public class Libro {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
-     @Override
+
+    @Override
     public String toString() {
-        return "ID: " + idLibro +
-               ", Título: " + titulo +
-               ", Autor: " + autor +
-               ", Editorial: " + editorial +
-               ", Precio: " + precio +
-               ", Stock: " + stock;
+        return  ", titulo=" + getTitulo() + ", autor=" + getAutor() + ", editorial=" + getEditorial()+ ", precio=" + getPrecio() ;
     }
+    
+     
     
 }
 

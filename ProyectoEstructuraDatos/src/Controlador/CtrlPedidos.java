@@ -2,83 +2,89 @@ package Controlador;
 
 
 import javax.swing.JOptionPane;
-import Modelo.Cola;
-import Modelo.Pedido;
-import Modelo.Libro;
+
+import Controlador.ListaCarrito;
+import Modelo.Compra;
+import Nodos.NodoCarrito;
+import Nodos.NodoCola;
 
 public class CtrlPedidos {
+     private NodoCola inicio;
+     private NodoCola fin;
+     private ListaCarrito carrito;
 
-    private final Cola colaPedidos = new Cola();
-    private final CtrlReportes reportes = new CtrlReportes();
-
-    public void encolarManual() {
-        try {
-            String titulo = JOptionPane.showInputDialog("Título del libro:");
-            String autor = JOptionPane.showInputDialog("Autor:");
-            String editorial = JOptionPane.showInputDialog("Editorial:");
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Precio:"));
-
-            Libro libro = new Libro(0, titulo, autor, editorial, precio, 0);
-            Pedido pedido = new Pedido(libro);
-
-            colaPedidos.encolar(pedido);
-            JOptionPane.showMessageDialog(null, "Pedido encolado.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Datos inválidos.");
+    public CtrlPedidos(ListaCarrito carrito) {
+  
+        this.carrito = carrito;
+    }
+     
+     
+     
+      public boolean vacia(){
+         if(inicio== null){
+             return true;
+             
+         }else{
+             return false;
+         }
+     }
+    
+    public void encolar(){
+        if (carrito.vacia()) {
+            JOptionPane.showMessageDialog(null, "El carrito está vacío, no se puede generar pedido.");
+            return;
         }
-    }
-
-    public void mostrarPendientes() {
-        JOptionPane.showMessageDialog(null, colaPedidos.recorrerComoTexto());
-    }
-
-    public void atenderSiguiente() {
-        Pedido pedido = colaPedidos.desencolar();
-        if (pedido == null) {
-            JOptionPane.showMessageDialog(null, "No hay pedidos por atender.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Pedido atendido:\n" + pedido.toString());
-            reportes.registrarVenta(pedido, null);
+          Compra com = new Compra();
+         com.setIdPedido(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la compra")));
+         com.setDetalle(JOptionPane.showInputDialog("Ingrese el detalle del pedido"));
+         com.setTotal(carrito.calcularTotal());
+         
+         //Agregamos el objeto estudiante en el nuevo nodo
+         NodoCola nuevo= new NodoCola();
+         //Agrego el estudiante al nodo nuevo
+         nuevo.setObjeto(carrito);
+         nuevo.setCompra( com);
+         //Insertamos el nodo en la cola
+ 
+         if (vacia()){
+             inicio=nuevo;
+             fin=nuevo;
+             
+         }else{
+             fin.setSiguiente(nuevo);
+             fin= nuevo;
+             
+         }
+     }
+   
+      public void generarFacturas() {
+        if (vacia()) {
+            System.out.println("No hay pedidos.");
+            return;
         }
-    }
 
-    public void mostrarLibrosMasVendidos() { reportes.mostrarLibrosMasVendidos(); }
-    public void mostrarClientesMasActivos() { reportes.mostrarClientesMasActivos(); }
+        NodoCola auxCola = inicio;
+        while (auxCola != null) {
+            System.out.println("----- FACTURA -----");
+            System.out.println("ID Compra: " + auxCola.getCompra().getIdPedido());
+            System.out.println("ID Detalle: " + auxCola.getCompra().getDetalle());
+            System.out.println("Total: " + auxCola.getCompra().getTotal());
 
-    public void menu() {
-        int op;
-        do {
-            op = Integer.parseInt(JOptionPane.showInputDialog(
-                    "GESTIÓN DE PEDIDOS\n" +
-                    "1) Encolar pedido manual\n" +
-                    "2) Mostrar pendientes\n" +
-                    "3) Atender siguiente\n" +
-                    "4) Reporte: Libros más vendidos\n" +
-                    "5) Reporte: Clientes más activos\n" +
-                    "0) Volver"));
-
-            switch (op) {
-                case 1:
-                    encolarManual();
-                    break;
-                case 2:
-                    mostrarPendientes();
-                    break;
-                case 3:
-                    atenderSiguiente();
-                    break;
-                case 4:
-                    mostrarLibrosMasVendidos();
-                    break;
-                case 5:
-                    mostrarClientesMasActivos();
-                    break;
-                case 0:
-                    JOptionPane.showMessageDialog(null, "¡Hasta luego!");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida");
+            NodoCarrito auxCarrito = auxCola.getObjeto().getInicio();
+            double total = 0;
+            while (auxCarrito != null) {
+                System.out.println(auxCarrito.getPedido().getObjeto().toString()); // llama a Libro.toString()
+                total += auxCarrito.getPedido().getObjeto().getPrecio();
+                auxCarrito = auxCarrito.getSiguiente();
             }
-        } while (op != 0);
+            System.out.println("Total: ₡" + total);
+            System.out.println("------------------\n");
+
+            auxCola = auxCola.getSiguiente();
+        }
     }
+     
+     
+
+   
 }

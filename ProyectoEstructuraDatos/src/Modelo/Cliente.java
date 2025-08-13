@@ -8,7 +8,6 @@ public class Cliente {
     private String correo;
     private String pass;
     
-    private Historial historial = new Historial();
 
     public Cliente() {
     }
@@ -52,7 +51,5 @@ public class Cliente {
         this.pass = pass;
     }
 
-    public Historial getHistorial() {
-        return historial;
-    }
+   
 }
