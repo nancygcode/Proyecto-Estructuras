@@ -1,24 +1,24 @@
 package Nodos;
 
+import Controlador.CtrlUsuarios;
+import Controlador.ListaCarrito;
+import Modelo.Compra;
+
 
 public class NodoCola {
    
-    private Object dato;
+    private ListaCarrito objeto;
+    
+    private Compra compra;
     private NodoCola siguiente;
 
-    public NodoCola(Object dato) {
-        this.dato = dato;
+    public NodoCola() {
+        this.objeto = objeto;
+
+        this.compra= compra;
         this.siguiente = null;
     }
-
-    public Object getDato() {
-        return dato;
-    }
-
-    public void setDato(Object dato) {
-        this.dato = dato;
-    }
-
+    
     public NodoCola getSiguiente() {
         return siguiente;
     }
@@ -26,6 +26,25 @@ public class NodoCola {
     public void setSiguiente(NodoCola siguiente) {
         this.siguiente = siguiente;
     }
+
+    public ListaCarrito getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(ListaCarrito objeto) {
+        this.objeto = objeto;
+    }
+
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+    
+    
 }
 
 

@@ -37,10 +37,7 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario: " + nombre + " | Correo: " + correo;
-    }
+    
 }
  
 

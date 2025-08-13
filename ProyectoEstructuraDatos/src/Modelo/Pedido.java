@@ -11,7 +11,6 @@ public class Pedido {
     }
 
     public Pedido(Libro objeto) {
-
         this.objeto = objeto;
     }
 
@@ -24,7 +23,5 @@ public class Pedido {
         this.objeto = objeto;
     }
 
-    Object getLibro() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
 }

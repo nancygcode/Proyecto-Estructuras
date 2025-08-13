@@ -90,4 +90,18 @@ public class ListaCarrito {
         }
         return s;
     }
+    
+    public double calcularTotal() {
+    double total = 0;
+    NodoCarrito aux = inicio;
+
+    while (aux != null) {
+        total += aux.getPedido().getObjeto().getPrecio(); // sumamos el precio del libro
+        aux = aux.getSiguiente();           // pasamos al siguiente nodo
+    }
+
+    return total;
+}
+    
+    
 }
