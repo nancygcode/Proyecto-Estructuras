@@ -2,8 +2,8 @@ package Controlador;
 
 import Nodos.NodoCarrito;
 import javax.swing.JOptionPane;
-import Controlador.CtrlCatalogo;
 import Modelo.Pedido;
+import Modelo.Libro;
 
 public class ListaCarrito {
 
@@ -17,7 +17,7 @@ public class ListaCarrito {
         }
     }
 
-    public void agregarPedido(CtrlCatalogo elemento) {
+    public void agregarPedido( Libro elemento) {
         Pedido pedido = new Pedido(elemento);
         NodoCarrito nuevoNodo = new NodoCarrito(pedido);
         if (inicio == null) {
@@ -32,12 +32,13 @@ public class ListaCarrito {
         JOptionPane.showMessageDialog(null, "Libro agregrado con exito al carrito");
     }
 
-    public void extraer(CtrlCatalogo elemento) {
+    public void extraer(String titulo) {
         NodoCarrito actual = inicio;
         NodoCarrito anterior = null;
+        titulo= JOptionPane.showInputDialog("Ingrese el nombre del libro que desea eliminar");
 
         while (actual != null) {
-            if (actual.getPedido().getObjeto()==elemento) {
+            if (actual.getPedido().getObjeto().getTitulo().equals(titulo)) {
                 if (anterior == null) {
                     inicio = actual.getSiguiente();//elimina el nodo inicial
                 } else {
@@ -59,7 +60,10 @@ public class ListaCarrito {
             NodoCarrito aux = inicio;
             while (aux != null) {
                 //agrega los datos mostrados porque lo muestra por marca
-                s += aux.getPedido().getObjeto();
+                s += aux.getPedido().getObjeto().getTitulo()+"/"+
+                        aux.getPedido().getObjeto().getAutor()+"\n"
+                        +aux.getPedido().getObjeto().getEditorial()+"\n"
+                        +aux.getPedido().getObjeto().getPrecio();
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "Contenido de la lista\n\n" + s);
@@ -74,7 +78,10 @@ public class ListaCarrito {
         NodoCarrito aux = inicio;
         if (!vacia()) {
             while (aux != null) {
-                s += aux.getPedido().getObjeto();
+                s += aux.getPedido().getObjeto() +"/"+
+                        aux.getPedido().getObjeto().getAutor()+"\n"
+                        +aux.getPedido().getObjeto().getEditorial()+"\n"
+                        +aux.getPedido().getObjeto().getPrecio();
                 aux = aux.getSiguiente();
             }
         } else {
