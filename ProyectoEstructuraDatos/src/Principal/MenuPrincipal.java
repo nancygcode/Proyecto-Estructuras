@@ -8,28 +8,43 @@ import Controlador.CtrlCatalogo;
 import Controlador.CtrlPedidos;
 import Controlador.ListaCarrito;
 import javax.swing.JOptionPane;
+import Controlador.CtrlUsuarios;
 
 public class MenuPrincipal {
 
     ListaCarrito carrito = new ListaCarrito();
     CtrlCatalogo catalogo = new CtrlCatalogo(carrito);
 
-    private String usuarioRegistrado = "";
-    private String contrasenaRegistrada = "";
+   CtrlUsuarios user = new CtrlUsuarios();
+    
+    public void Inicio(){
+        int op = Integer.parseInt(JOptionPane.showInputDialog("Menu Usuario"
+                + "\n Seleccione una opcion"
+        +"\n1.Iniciar Sesion"
+        +"\n2. Cerrar Sesion"
+        +"\n3. Eliminar Usuario"
+        +"4. Salir"));
+        
+        switch (op) {
+            case 1:
+                user.iniciarSesion();
+                opciones();
+                break;
+                case 2:
+                    user.cerrarSesion();
+                break;
+                case 3:
+                    user.eliminarUsuario();
+                break;
+                case 4:
+                    System.exit(0);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
 
     public void opciones() {
-      
-        usuarioRegistrado = JOptionPane.showInputDialog("Cree su nombre de usuario:");
-        contrasenaRegistrada = JOptionPane.showInputDialog("Cree su contraseña:");
-
-        
-        String usuario = JOptionPane.showInputDialog("Ingrese su nombre de usuario:");
-        String contrasena = JOptionPane.showInputDialog("Ingrese su contraseña:");
-
-        if (!usuario.equals(usuarioRegistrado) || !contrasena.equals(contrasenaRegistrada)) {
-            JOptionPane.showMessageDialog(null, "Acceso denegado. Usuario o contraseña incorrectos.");
-            return; 
-        }
 
         int op = Integer.parseInt(JOptionPane.showInputDialog(
                 "-------------------SIMULACION DE LIBRERIA 📚-----------------"
@@ -65,6 +80,7 @@ public class MenuPrincipal {
                 opciones();
                 break;
         }
+        opciones();
     }
 
     public void AccionComprar() {

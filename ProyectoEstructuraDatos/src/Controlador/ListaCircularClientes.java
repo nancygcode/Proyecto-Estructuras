@@ -1,11 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Controlador;
-
-import Modelo.Cliente;
 import Nodos.NodoCliente;
+import Modelo.Cliente;
 import javax.swing.JOptionPane;
 
 public class ListaCircularClientes {
-
     private NodoCliente inicio;
     private NodoCliente fin;
 
@@ -109,4 +111,3 @@ public class ListaCircularClientes {
         return s;
     }
 }
-    

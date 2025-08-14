@@ -7,7 +7,7 @@ public class Principal {
      */
     public static void main(String[] args) {
         MenuPrincipal m = new MenuPrincipal();
-        m.opciones();
+        m.Inicio();
     }
     
 }

@@ -2,6 +2,7 @@
 package Controlador;
 import Modelo.Cliente;
 import Controlador.ListaCircularClientes;
+import Principal.MenuPrincipal;
 import javax.swing.JOptionPane;
 
 public class CtrlUsuarios {
@@ -32,6 +33,7 @@ public class CtrlUsuarios {
             if (c != null && c.getPass().equals(pass)) {
                 sesionActual = c;
                 JOptionPane.showMessageDialog(null, "Bienvenido, " + c.getNombre());
+             
             } else {
                 JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
             }
