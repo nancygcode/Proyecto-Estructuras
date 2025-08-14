@@ -135,7 +135,7 @@ public class CtrlCatalogo {
 
                 if (pedido == JOptionPane.YES_OPTION) {
                     carrito.agregarPedido(l);
-                    JOptionPane.showMessageDialog(null, "libro agregado al carrito exitosamente");
+                   
                 }
             }
                 

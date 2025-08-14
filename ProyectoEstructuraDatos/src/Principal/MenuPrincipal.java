@@ -21,7 +21,8 @@ public class MenuPrincipal {
     
     public void opciones() {
        int op = Integer.parseInt(JOptionPane.showInputDialog(
-                "Seleccione una opción:\n"
+                "-------------------SIMULACION DE LIBRERIA 📚-----------------"
+               +"\nSeleccione una opción:\n"
                 + "1) Ingresar al Catalogo\n"
                 + "2) Ver Carrito\n"
                 + "3) Eliminar del carrito\n"
