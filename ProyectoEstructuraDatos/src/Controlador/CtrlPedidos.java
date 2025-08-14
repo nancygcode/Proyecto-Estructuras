@@ -3,7 +3,6 @@ package Controlador;
 
 import javax.swing.JOptionPane;
 
-import Controlador.ListaCarrito;
 import Modelo.Compra;
 import Nodos.NodoCarrito;
 import Nodos.NodoCola;
