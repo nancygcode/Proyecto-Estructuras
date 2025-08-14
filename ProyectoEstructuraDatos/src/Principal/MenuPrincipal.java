@@ -24,7 +24,8 @@ public class MenuPrincipal {
         +"\n2.Iniciar Sesion"
         +"\n3. Cerrar Sesion"
         +"\n4. Eliminar Usuario"
-        +"5. Salir"));
+       +"\n5. Mostrar Usuario"
+        +"\n6. Salir"));
         
         switch (op) {
             case 1:
@@ -41,7 +42,11 @@ public class MenuPrincipal {
                 case 4:
                     user.eliminarUsuario();
                 break;
-                case 5:
+                 case 5:
+                    user.mostrarUsuarios();
+                    Inicio();
+                break;
+                case 6:
                     System.exit(0);
                 break;
             default:

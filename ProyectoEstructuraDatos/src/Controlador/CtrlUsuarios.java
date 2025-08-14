@@ -2,7 +2,6 @@
 package Controlador;
 import Modelo.Cliente;
 import Controlador.ListaCircularClientes;
-import Principal.MenuPrincipal;
 import javax.swing.JOptionPane;
 
 public class CtrlUsuarios {
