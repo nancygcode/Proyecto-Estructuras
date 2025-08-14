@@ -1,61 +1,58 @@
 
 package Controlador;
 import Modelo.Cliente;
-import Modelo.Compra;
-import java.util.ArrayList;
+import Controlador.ListaCircularClientes;
 import javax.swing.JOptionPane;
 
-
 public class CtrlUsuarios {
-    private ArrayList<Cliente> usuarios = new ArrayList<>();
-    private Cliente sesionActual = null;
 
-    public void registrarUsuario() {
-        try {
-            int id = Integer.parseInt(JOptionPane.showInputDialog("ID del usuario: "));
-            String nombre = JOptionPane.showInputDialog("Nombre: ");
-            String correo = JOptionPane.showInputDialog("Correo: ");
-            String pass = JOptionPane.showInputDialog("Contraseña: ");
+        private ListaCircularClientes lista = new ListaCircularClientes();
+        private Cliente sesionActual = null;
 
-            if (correo == null || correo.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Correo inválido.");
-                return;
-            }
-            if (existeCorreo(correo)) {
-                JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese correo.");
+        public void registrarUsuario() {
+            int id = Integer.parseInt(JOptionPane.showInputDialog("ID:"));
+            String nombre = JOptionPane.showInputDialog("Nombre:");
+            String correo = JOptionPane.showInputDialog("Correo:");
+            String pass = JOptionPane.showInputDialog("Contraseña:");
+
+            if (lista.buscarPorCorreo(correo) != null) {
+                JOptionPane.showMessageDialog(null, "Correo ya registrado.");
                 return;
             }
 
-            usuarios.add(new Cliente(id, nombre, correo, pass));
-            JOptionPane.showMessageDialog(null, "Usuario registrado correctamente.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: Datos inválidos.");
+            lista.insertar(new Cliente(id, nombre, correo, pass));
+            JOptionPane.showMessageDialog(null, "Usuario registrado.");
         }
-    }
 
-    private boolean existeCorreo(String correo) {
-        for (Cliente c : usuarios) {
-            if (c.getCorreo().equalsIgnoreCase(correo)) {
-                return true;
-            }
-        }
-        return false;
-    }
+        public void iniciarSesion() {
+            String correo = JOptionPane.showInputDialog("Correo:");
+            String pass = JOptionPane.showInputDialog("Contraseña:");
 
-    public void iniciarSesion() {
-        String correo = JOptionPane.showInputDialog("Correo:");
-        String pass = JOptionPane.showInputDialog("Contraseña:");
-
-        for (Cliente c : usuarios) {
-            if (c.getCorreo().equalsIgnoreCase(correo) && c.getPass().equals(pass)) {
+            Cliente c = lista.buscarPorCorreo(correo);
+            if (c != null && c.getPass().equals(pass)) {
                 sesionActual = c;
                 JOptionPane.showMessageDialog(null, "Bienvenido, " + c.getNombre());
-                return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
             }
         }
-        JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
-    }
 
+        public void cerrarSesion() {
+            if (sesionActual != null) {
+                JOptionPane.showMessageDialog(null, "Sesión cerrada de " + sesionActual.getNombre());
+                sesionActual = null;
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay sesión activa.");
+            }
+        }
 
-   
+        public void eliminarUsuario() {
+            String correo = JOptionPane.showInputDialog("Correo a eliminar:");
+            boolean eliminado = lista.eliminarPorCorreo(correo);
+            JOptionPane.showMessageDialog(null, eliminado ? "Usuario eliminado" : "No se encontró ese correo.");
+        }
+
+        public void mostrarUsuarios() {
+            JOptionPane.showMessageDialog(null, lista.toString());
+        }
     }
