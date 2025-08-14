@@ -1,22 +1,23 @@
 package Modelo;
 
 
-public class Cliente {
-    
-    private int id;
+private int id;
     private String nombre;
     private String correo;
     private String pass;
-    
 
     public Cliente() {
-    }
-
-    public Cliente(int id, String nombre, String correo, String pass) {
         this.id = 0;
         this.nombre = "";
         this.correo = "";
         this.pass = "";
+    }
+
+    public Cliente(int id, String nombre, String correo, String pass) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.pass = pass;
     }
 
     public int getId() {
@@ -51,5 +52,9 @@ public class Cliente {
         this.pass = pass;
     }
 
-   
+    @Override
+    public String toString() {
+        return "Cliente {ID=" + id + ", Nombre= " + nombre
+                + ", correo= " + correo + "}";
+    }
 }
