@@ -20,23 +20,28 @@ public class MenuPrincipal {
     public void Inicio(){
         int op = Integer.parseInt(JOptionPane.showInputDialog("Menu Usuario"
                 + "\n Seleccione una opcion"
-        +"\n1.Iniciar Sesion"
-        +"\n2. Cerrar Sesion"
-        +"\n3. Eliminar Usuario"
-        +"4. Salir"));
+                +"\n1. Registrar Usuario"
+        +"\n2.Iniciar Sesion"
+        +"\n3. Cerrar Sesion"
+        +"\n4. Eliminar Usuario"
+        +"5. Salir"));
         
         switch (op) {
             case 1:
+                user.registrarUsuario();
+                Inicio();
+                break;
+            case 2:
                 user.iniciarSesion();
                 opciones();
                 break;
-                case 2:
+                case 3:
                     user.cerrarSesion();
                 break;
-                case 3:
+                case 4:
                     user.eliminarUsuario();
                 break;
-                case 4:
+                case 5:
                     System.exit(0);
                 break;
             default:
