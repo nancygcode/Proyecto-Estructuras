@@ -78,7 +78,10 @@ public class Libro {
 
     @Override
     public String toString() {
-        return  ", titulo=" + getTitulo() + ", autor=" + getAutor() + ", editorial=" + getEditorial()+ ", precio=" + getPrecio() ;
+        return  "Titulo: " + getTitulo() 
+                + "\nAutor: " + getAutor() 
+                + "\nEditorial: " + getEditorial()
+                + "\nPrecio" + getPrecio() ;
     }
     
      
