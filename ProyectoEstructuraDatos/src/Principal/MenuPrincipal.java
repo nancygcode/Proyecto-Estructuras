@@ -9,25 +9,36 @@ import Controlador.CtrlPedidos;
 import Controlador.ListaCarrito;
 import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author XSF
- */
 public class MenuPrincipal {
 
     ListaCarrito carrito = new ListaCarrito();
     CtrlCatalogo catalogo = new CtrlCatalogo(carrito);
-    
+
+    private String usuarioRegistrado = "";
+    private String contrasenaRegistrada = "";
+
     public void opciones() {
-       int op = Integer.parseInt(JOptionPane.showInputDialog(
+      
+        usuarioRegistrado = JOptionPane.showInputDialog("Cree su nombre de usuario:");
+        contrasenaRegistrada = JOptionPane.showInputDialog("Cree su contraseña:");
+
+        
+        String usuario = JOptionPane.showInputDialog("Ingrese su nombre de usuario:");
+        String contrasena = JOptionPane.showInputDialog("Ingrese su contraseña:");
+
+        if (!usuario.equals(usuarioRegistrado) || !contrasena.equals(contrasenaRegistrada)) {
+            JOptionPane.showMessageDialog(null, "Acceso denegado. Usuario o contraseña incorrectos.");
+            return; 
+        }
+
+        int op = Integer.parseInt(JOptionPane.showInputDialog(
                 "-------------------SIMULACION DE LIBRERIA 📚-----------------"
-               +"\nSeleccione una opción:\n"
+                + "\nSeleccione una opción:\n"
                 + "1) Ingresar al Catalogo\n"
                 + "2) Ver Carrito\n"
                 + "3) Eliminar del carrito\n"
-                + "4) Pagar Carrito\n"+
-                    "5) Salir"));
+                + "4) Pagar Carrito\n"
+                + "5) Salir"));
 
         switch (op) {
             case 1:
@@ -35,46 +46,43 @@ public class MenuPrincipal {
                 opciones();
                 break;
             case 2:
-               carrito.mostrar();
-               opciones();
+                carrito.mostrar();
+                opciones();
                 break;
             case 3:
                 carrito.extraer();
+                opciones();
                 break;
             case 4:
                 AccionComprar();
                 opciones();
                 break;
-             case 5:
+            case 5:
                 System.exit(0);
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción inválida");
+                opciones();
+                break;
         }
-
-        opciones();
     }
-    
 
-        
-        public void AccionComprar(){
+    public void AccionComprar() {
         CtrlPedidos factura = new CtrlPedidos(carrito);
-        int accion=Integer.parseInt(JOptionPane.showInputDialog("Desea: \n1.Efectivo \n 2. Tarjeta"));
-        switch (accion){
+        int accion = Integer.parseInt(JOptionPane.showInputDialog("Desea: \n1. Efectivo \n2. Tarjeta"));
+        switch (accion) {
             case 1:
-                JOptionPane.showMessageDialog(null, "Serian: "+ carrito.calcularTotal());
+                JOptionPane.showMessageDialog(null, "Serían: " + carrito.calcularTotal());
                 factura.encolar();
                 factura.generarFacturas();
-               
                 break;
-            case 2: 
-                JOptionPane.showMessageDialog(null, "Aqui tiene el datafono");
+            case 2:
+                JOptionPane.showMessageDialog(null, "Aquí tiene el datáfono");
                 factura.encolar();
                 factura.generarFacturas();
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Opcion incorrecta");
-                
+                JOptionPane.showMessageDialog(null, "Opción incorrecta");
         }
-              
     }
 }
