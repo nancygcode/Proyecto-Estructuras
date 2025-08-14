@@ -63,7 +63,7 @@ public class ListaCarrito {
                 s += "Título: "+aux.getPedido().getObjeto().getTitulo()+"\n"+
                         "Autor: "+aux.getPedido().getObjeto().getAutor()+"\n"+
                         "Editorial"+aux.getPedido().getObjeto().getEditorial()+"\n"+
-                        "Precio"+aux.getPedido().getObjeto().getPrecio();
+                        "Precio"+aux.getPedido().getObjeto().getPrecio()+"\n";
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "Carrito 🛒\n\n" + s);
@@ -81,7 +81,7 @@ public class ListaCarrito {
                 s += aux.getPedido().getObjeto() +"/"+
                         aux.getPedido().getObjeto().getAutor()+"\n"
                         +aux.getPedido().getObjeto().getEditorial()+"\n"
-                        +aux.getPedido().getObjeto().getPrecio();
+                        +aux.getPedido().getObjeto().getPrecio()+"\n";
                 aux = aux.getSiguiente();
             }
         } else {
