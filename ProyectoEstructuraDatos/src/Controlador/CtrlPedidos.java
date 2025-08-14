@@ -16,10 +16,8 @@ public class CtrlPedidos {
   
         this.carrito = carrito;
     }
-     
-     
-     
-      public boolean vacia(){
+    
+    public boolean vacia(){
          if(inicio== null){
              return true;
              
@@ -33,7 +31,7 @@ public class CtrlPedidos {
             JOptionPane.showMessageDialog(null, "El carrito está vacío, no se puede generar pedido.");
             return;
         }
-          Compra com = new Compra();
+         Compra com = new Compra();
          com.setIdPedido(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la compra")));
          com.setDetalle(JOptionPane.showInputDialog("Ingrese el detalle del pedido"));
          com.setTotal(carrito.calcularTotal());

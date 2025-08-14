@@ -51,7 +51,6 @@ public class ListaCarrito {
             actual = actual.getSiguiente();
             JOptionPane.showMessageDialog(null, "El libro no se pudo eliminar");
         }
-
     }
 
     public void mostrar() {
@@ -99,8 +98,6 @@ public class ListaCarrito {
         total += aux.getPedido().getObjeto().getPrecio(); // sumamos el precio del libro
         aux = aux.getSiguiente();           // pasamos al siguiente nodo
     }
-
-    
     return total;
 }
     

@@ -12,10 +12,6 @@ public class CtrlCatalogo {
     public CtrlCatalogo(ListaCarrito carrito) {
         this.carrito= carrito;
     }
-
-    
-      
-
     private final ArbolLibro arbolTitulo = new ArbolLibro();                 // índice por TÍTULO
     private final ArbolLibroPorAutor arbolAutor = new ArbolLibroPorAutor();  // índice por AUTOR→TÍTULO→ID
 
